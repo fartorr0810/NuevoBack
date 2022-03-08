@@ -335,7 +335,7 @@ public class UserController {
      * @param id del alquiler
      * @return devuelve el alquiler con el estado cambiado
      */
-    @CrossOrigin(origins = "https://fartorr0810.github.io/")
+    @CrossOrigin(origins = "http://localhost:4200/alquiler")
     @PutMapping("/alquiler/{id}")
     public ResponseEntity<AlquilerDTO> entregarPatinete(@PathVariable Integer id){
     	Alquiler alquiler=this.servicioAlquiler.findById(id);
@@ -351,7 +351,7 @@ public class UserController {
      * @param id del alquiler a eliminar 
      * @return devuelve un NO_CONTENT
      */
-    @CrossOrigin(origins = "https://fartorr0810.github.io/")
+    @CrossOrigin(origins = "http://localhost:4200/alquiler")
     @DeleteMapping("/alquiler/{id}")
     public ResponseEntity<AlquilerDTO> deleteAlquiler(@PathVariable Integer id){
     	Alquiler alquiler=this.servicioAlquiler.findById(id);

@@ -20,6 +20,6 @@ public interface DescuentoRepository extends JpaRepository<Descuento, Integer>{
 	 * @param codigo
 	 * @return
 	 */
-	@Query(value="SELECT * FROM alquiler.descuento des WHERE des.codigo = :codigo",nativeQuery=true)
+	@Query(value="SELECT * FROM bgblrez3xfufam9bmyci.descuento des WHERE des.codigo = :codigo",nativeQuery=true)
 	Descuento findDescuentoByCodigo(@Param("codigo") String codigo);
 }

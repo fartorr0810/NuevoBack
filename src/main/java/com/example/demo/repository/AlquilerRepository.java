@@ -18,6 +18,6 @@ public interface AlquilerRepository extends JpaRepository<Alquiler, Integer> {
 	 * @param id de usuario
 	 * @return devuelve una lista con los alquileres.
 	 */
-	@Query(value="SELECT * FROM alquiler.alquiler ta WHERE ta.user_id = :id",nativeQuery=true)
+	@Query(value="SELECT * FROM bgblrez3xfufam9bmyci.alquiler ta WHERE ta.user_id = :id",nativeQuery=true)
 	List<Alquiler> findAlquilerUsuario(@Param("id") Integer id);
 }
