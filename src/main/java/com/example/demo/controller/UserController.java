@@ -385,7 +385,7 @@ public class UserController {
      * @param ex excepcion
      * @return devuelve el api error con los datos de la excepcion
      */
-    @ExceptionHandler(AlquilerNoEncontradoException.class)
+    @ExceptionHandler(FacturaNoEncontrada.class)
     public ResponseEntity<ApiError> handleFacturaNoEncontrada(FacturaNoEncontrada ex){
     	ApiError apierror=new ApiError();
     	apierror.setEstado(HttpStatus.NOT_FOUND);
@@ -477,7 +477,7 @@ public class UserController {
      * @return devuelve el apierror con los datos de la excepcion
      */
     @ExceptionHandler(SinPatinetesException.class)
-    public ResponseEntity<ApiError> handleAlquiler(SinPatinetesException ex){
+    public ResponseEntity<ApiError> handleQueNoTienePatinete(SinPatinetesException ex){
     	ApiError apierror=new ApiError();
     	apierror.setEstado(HttpStatus.NOT_FOUND);
     	apierror.setMensaje(ex.getMessage());
