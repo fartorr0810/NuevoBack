@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/comentario").permitAll()
                 .antMatchers("/alquiler").hasRole("USER")	
                 .antMatchers("/patinete").authenticated()
-                .antMatchers("/user/**").hasRole("USER")
+                .antMatchers("/user/**").permitAll()
                 .and()
                 .userDetailsService(uds)
                 .exceptionHandling()

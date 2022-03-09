@@ -23,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.example.demo.exception.AlquilerNoEncontradoException;
 import com.example.demo.exception.ApiError;
 import com.example.demo.exception.ContenidoComentarioVacioException;
+import com.example.demo.exception.EmailRepetidoException;
 import com.example.demo.exception.ErrorAlquilerException;
 import com.example.demo.exception.FacturaNoEncontrada;
 import com.example.demo.exception.KmHoraException;
@@ -75,15 +76,16 @@ public class UserController {
     	String email=(String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		return ResponseEntity.status(HttpStatus.OK).body(userRepo.findByEmail(email).get().getId());
     }
-    /**
-     * Devuelve el email del usuario indicandole la id
-     * @return el email
-     */
-    @GetMapping("/user/{id}")
-    public ResponseEntity<String> obtenerRol(){
-    	String email=(String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		return ResponseEntity.status(HttpStatus.OK).body(userRepo.findByEmail(email).get().getRol());
-    }
+    
+	@GetMapping("/user/{email}")
+	public User checkEmailUser(@PathVariable String email) {	
+		if (userRepo.findByEmail(email)!=null) {
+			return userRepo.findByEmail(email).orElse(null);
+		}
+		else {
+			throw new EmailRepetidoException(email);
+		}
+	}
     /**
      * Metodo para comprobar que existe ese correo en la base de datos (NO UTILIZADO EN FRONT)
      * @param email 
